@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سوشيال ماركت - خدمات المشاهدات والمتابعين</title>
+    <title>سوشيال بست - خدمات المشاهدات والمتابعين</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -45,7 +45,7 @@
 
         /* Header Styles */
         header {
-            background: rgba(26, 26, 46, 0.8);
+            background: rgba(26, 26, 46, 0.95);
             backdrop-filter: blur(10px);
             padding: 15px 0;
             position: fixed;
@@ -53,6 +53,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
         }
 
         .header-content {
@@ -116,12 +117,10 @@
             left: 0;
         }
 
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 10px 25px;
             border-radius: var(--border-radius);
             font-weight: 600;
@@ -129,29 +128,19 @@
             transition: var(--transition);
             border: none;
             font-size: 1rem;
-            text-align: center;
-        }
-
-        .btn-primary {
             background: var(--primary);
             color: white;
+            text-decoration: none;
         }
 
-        .btn-primary:hover {
-            background: var(--primary-dark);
+        .telegram-btn:hover {
+            background: #2AABEE;
             transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(108, 99, 255, 0.4);
+            box-shadow: 0 7px 15px rgba(42, 171, 238, 0.4);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
+        .telegram-btn i {
+            font-size: 1.2rem;
         }
 
         /* Hero Section */
@@ -241,6 +230,8 @@
             transition: var(--transition);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
         }
 
         .service-card:hover {
@@ -275,138 +266,85 @@
             margin-bottom: 20px;
         }
 
-        /* Pricing Section */
-        .pricing {
-            padding: 80px 0;
-            background: rgba(10, 10, 20, 0.7);
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .pricing-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            padding: 30px;
+        /* Telegram Section */
+        .telegram-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #2AABEE, #229ED9);
             text-align: center;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .pricing-card:hover {
-            transform: scale(1.03);
-            box-shadow: var(--box-shadow);
-            border-color: var(--primary);
-        }
-
-        .pricing-card.popular {
-            border: 2px solid var(--primary);
             position: relative;
-        }
-
-        .popular-tag {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .price span {
-            font-size: 1rem;
-            color: #b0b0d0;
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 30px 0;
-            text-align: right;
-        }
-
-        .pricing-features li {
-            padding: 10px 0;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-        }
-
-        .pricing-features li i {
-            color: var(--success);
-            margin-left: 10px;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 80px 0;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
             overflow: hidden;
-            margin-left: 15px;
         }
 
-        .testimonial-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .telegram-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg') center/contain no-repeat;
+            opacity: 0.05;
+            transform: rotate(30deg);
         }
 
-        .testimonial-info h4 {
+        .telegram-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .telegram-icon {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        .telegram-icon i {
+            font-size: 3rem;
+            color: #2AABEE;
+        }
+
+        .telegram-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .telegram-content p {
             font-size: 1.2rem;
-            margin-bottom: 5px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .testimonial-info p {
-            color: var(--primary);
-            font-size: 0.9rem;
+        .telegram-username {
+            display: inline-block;
+            background: white;
+            color: #2AABEE;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
         }
 
-        .rating {
-            color: var(--warning);
-            margin-top: 5px;
+        .telegram-username:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* FAQ Section */
@@ -457,25 +395,6 @@
         .faq-item.active .faq-answer {
             padding: 0 30px 20px;
             max-height: 200px;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 100px 0;
-            text-align: center;
-            background: linear-gradient(135deg, #6c63ff, #2a2a72);
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            color: #e0e0ff;
         }
 
         /* Footer */
@@ -595,10 +514,19 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+            
+            .telegram-icon {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .telegram-content h2 {
+                font-size: 2rem;
+            }
         }
 
         @media (max-width: 576px) {
-            .btn {
+            .telegram-btn {
                 padding: 8px 20px;
                 font-size: 0.9rem;
             }
@@ -607,8 +535,13 @@
                 font-size: 2rem;
             }
             
-            .service-card, .pricing-card, .testimonial-card {
+            .service-card {
                 padding: 20px;
+            }
+            
+            .telegram-username {
+                font-size: 1.2rem;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -619,25 +552,23 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <i class="fas fa-rocket"></i>
-                    <h1>سوشيال ماركت</h1>
+                    <i class="fas fa-chart-line"></i>
+                    <h1>سوشيال بست</h1>
                 </div>
                 
                 <nav>
                     <ul>
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#services">الخدمات</a></li>
-                        <li><a href="#pricing">الباقات</a></li>
-                        <li><a href="#testimonials">اراء العملاء</a></li>
                         <li><a href="#faq">الأسئلة الشائعة</a></li>
-                        <li><a href="#contact">اتصل بنا</a></li>
+                        <li><a href="#telegram">التواصل</a></li>
                     </ul>
                 </nav>
                 
-                <div class="auth-buttons">
-                    <button class="btn btn-outline">تسجيل دخول</button>
-                    <button class="btn btn-primary">تسجيل جديد</button>
-                </div>
+                <a href="https://t.me/mr_muro1" class="telegram-btn">
+                    <i class="fab fa-telegram"></i>
+                    تواصل على التلجرام
+                </a>
             </div>
         </div>
     </header>
@@ -647,10 +578,12 @@
         <div class="container">
             <div class="hero-content">
                 <h2>زود متابعيك ومشاهداتك بسرعة وموثوقية</h2>
-                <p>الخدمة الأسرع والأكثر موثوقية لزيادة المتابعين والمشاهدات على TikTok، Facebook، وYouTube بأفضل الأسعار</p>
+                <p>الخدمة الأسرع والأكثر موثوقية لزيادة المتابعين والمشاهدات على TikTok، Facebook، وYouTube</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary">اطلب الآن</button>
-                    <button class="btn btn-outline">عرض الخدمات</button>
+                    <a href="https://t.me/mr_muro1" class="telegram-btn">
+                        <i class="fab fa-telegram"></i>
+                        تواصل للطلب الآن
+                    </a>
                 </div>
             </div>
         </div>
@@ -672,7 +605,10 @@
                     </div>
                     <h3>مشاهدات تيك توك</h3>
                     <p>احصل على آلاف المشاهدات الحقيقية لفيديوهاتك على TikTok بسرعة فائقة لزيادة انتشارك</p>
-                    <button class="btn btn-outline">اطلب الآن</button>
+                    <a href="https://t.me/mr_muro1" class="telegram-btn">
+                        <i class="fab fa-telegram"></i>
+                        تواصل للطلب
+                    </a>
                 </div>
                 
                 <!-- Service 2 -->
@@ -682,7 +618,10 @@
                     </div>
                     <h3>مشاهدات يوتيوب</h3>
                     <p>زود مشاهدات فيديوهاتك على YouTube بشكل طبيعي لتحسين تصنيفاتك وجذب المزيد من المشاهدين</p>
-                    <button class="btn btn-outline">اطلب الآن</button>
+                    <a href="https://t.me/mr_muro1" class="telegram-btn">
+                        <i class="fab fa-telegram"></i>
+                        تواصل للطلب
+                    </a>
                 </div>
                 
                 <!-- Service 3 -->
@@ -692,7 +631,10 @@
                     </div>
                     <h3>مشاهدات فيسبوك</h3>
                     <p>زود مشاهدات فيديوهاتك على Facebook بسرعة لزيادة التفاعل والوصول إلى جمهور أوسع</p>
-                    <button class="btn btn-outline">اطلب الآن</button>
+                    <a href="https://t.me/mr_muro1" class="telegram-btn">
+                        <i class="fab fa-telegram"></i>
+                        تواصل للطلب
+                    </a>
                 </div>
                 
                 <!-- Service 4 -->
@@ -702,7 +644,10 @@
                     </div>
                     <h3>متابعين تيك توك</h3>
                     <p>احصل على متابعين حقيقيين ونشطين لحسابك على TikTok لزيادة مصداقيتك وانتشارك</p>
-                    <button class="btn btn-outline">اطلب الآن</button>
+                    <a href="https://t.me/mr_muro1" class="telegram-btn">
+                        <i class="fab fa-telegram"></i>
+                        تواصل للطلب
+                    </a>
                 </div>
                 
                 <!-- Service 5 -->
@@ -712,7 +657,10 @@
                     </div>
                     <h3>متابعين فيسبوك</h3>
                     <p>زود متابعي صفحتك على Facebook بمتابعين حقيقيين مهتمين بمحتواك لزيادة التفاعل</p>
-                    <button class="btn btn-outline">اطلب الآن</button>
+                    <a href="https://t.me/mr_muro1" class="telegram-btn">
+                        <i class="fab fa-telegram"></i>
+                        تواصل للطلب
+                    </a>
                 </div>
                 
                 <!-- Service 6 -->
@@ -722,138 +670,33 @@
                     </div>
                     <h3>مشتركين يوتيوب</h3>
                     <p>احصل على مشتركين حقيقيين لقناتك على YouTube لزيادة إيراداتك وانتشار قناتك</p>
-                    <button class="btn btn-outline">اطلب الآن</button>
+                    <a href="https://t.me/mr_muro1" class="telegram-btn">
+                        <i class="fab fa-telegram"></i>
+                        تواصل للطلب
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
+    <!-- Telegram Section -->
+    <section class="telegram-section" id="telegram">
         <div class="container">
-            <div class="section-title">
-                <h2>باقاتنا التنافسية</h2>
-                <p>اختر الباقة المناسبة لك من بين أفضل العروض والأسعار في السوق</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <!-- Pricing Card 1 -->
-                <div class="pricing-card">
-                    <h3>الباقة الأساسية</h3>
-                    <div class="price">50 ريال <span>/ للخدمة</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 1000 متابع لـ TikTok</li>
-                        <li><i class="fas fa-check"></i> 5000 مشاهدة لـ TikTok</li>
-                        <li><i class="fas fa-times"></i> متابعين لـ Facebook</li>
-                        <li><i class="fas fa-times"></i> مشاهدات لـ YouTube</li>
-                        <li><i class="fas fa-times"></i> دعم فني 24/7</li>
-                    </ul>
-                    <button class="btn btn-outline">اختر الباقة</button>
+            <div class="telegram-content">
+                <div class="telegram-icon">
+                    <i class="fab fa-telegram"></i>
+                </div>
+                <h2>للطلب والاستفسار تواصل معنا على التلجرام</h2>
+                <p>نحن نتواجد على مدار الساعة للإجابة على استفساراتك وتلبية طلباتك بخصوص خدمات المشاهدات والمتابعين</p>
+                
+                <div class="telegram-username">
+                    <i class="fab fa-telegram"></i> @mr_muro1
                 </div>
                 
-                <!-- Pricing Card 2 (Popular) -->
-                <div class="pricing-card popular">
-                    <div class="popular-tag">الأكثر طلباً</div>
-                    <h3>الباقة المتوسطة</h3>
-                    <div class="price">120 ريال <span>/ للخدمة</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 5000 متابع لـ TikTok</li>
-                        <li><i class="fas fa-check"></i> 25000 مشاهدة لـ TikTok</li>
-                        <li><i class="fas fa-check"></i> 1000 متابع لـ Facebook</li>
-                        <li><i class="fas fa-check"></i> 10000 مشاهدة لـ YouTube</li>
-                        <li><i class="fas fa-check"></i> دعم فني 24/7</li>
-                    </ul>
-                    <button class="btn btn-primary">اختر الباقة</button>
-                </div>
-                
-                <!-- Pricing Card 3 -->
-                <div class="pricing-card">
-                    <h3>الباقة الاحترافية</h3>
-                    <div class="price">250 ريال <span>/ للخدمة</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 10000 متابع لـ TikTok</li>
-                        <li><i class="fas fa-check"></i> 50000 مشاهدة لـ TikTok</li>
-                        <li><i class="fas fa-check"></i> 5000 متابع لـ Facebook</li>
-                        <li><i class="fas fa-check"></i> 50000 مشاهدة لـ YouTube</li>
-                        <li><i class="fas fa-check"></i> دعم فني 24/7</li>
-                    </ul>
-                    <button class="btn btn-outline">اختر الباقة</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>اراء عملائنا</h2>
-                <p>انطباعات العملاء الذين جربوا خدماتنا واختبروا جودتها</p>
-            </div>
-            
-            <div class="testimonials-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="عميل">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>سارة محمد</h4>
-                            <p>مؤثرة على تيك توك</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"خدمة ممتازة! حصلت على 5000 متابع خلال 3 أيام فقط، والمتابعين حقيقيون ويتفاعلون مع المحتوى. شكراً لكم على الدعم المستمر!"</p>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="عميل">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>أحمد خالد</h4>
-                            <p>صاحب قناة يوتيوب</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"لقد جربت العديد من الخدمات من قبل، لكن هذه المرة كانت الأفضل. المشاهدات تزيد بشكل طبيعي ولا يوجد انخفاض بعد فترة. أنصح الجميع بهذه الخدمة."</p>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="عميل">
-                        </div>
-                        <div class="testimonial-info">
-                            <h4>لمى عبدالله</h4>
-                            <p>مديرة تسويق</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"استخدمت الخدمة لزيادة متابعي صفحة الفيسبوك الخاصة بالشركة، النتائج مذهلة! التفاعل زاد بنسبة 70% والمبيعات تحسنت بشكل ملحوظ. شكراً لكم!"</p>
-                </div>
+                <a href="https://t.me/mr_muro1" class="telegram-btn" style="background: white; color: #2AABEE;">
+                    <i class="fab fa-telegram"></i>
+                    تواصل معنا الآن
+                </a>
             </div>
         </div>
     </section>
@@ -910,27 +753,7 @@
                         <p>نعم، جميع خدماتنا تعمل ضمن سياسات منصات التواصل الاجتماعي ولا تشكل أي خطر على حسابك.</p>
                     </div>
                 </div>
-                
-                <!-- FAQ Item 5 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>ما هي طرق الدفع المتاحة؟</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>نحن نقبل الدفع عبر البطاقات الإئتمانية، PayPal، تحويل بنكي، وSTC Pay. يمكنك اختيار الطريقة الأنسب لك.</p>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="contact">
-        <div class="container">
-            <h2>جاهز لتعزيز وجودك على وسائل التواصل الاجتماعي؟</h2>
-            <p>ابدأ الآن واختر الخدمة التي تناسبك لتزيد من متابعيك ومشاهداتك بسرعة وأمان</p>
-            <button class="btn btn-primary">ابدأ الآن</button>
         </div>
     </section>
 
@@ -940,8 +763,8 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div class="logo">
-                        <i class="fas fa-rocket"></i>
-                        <h3>سوشيال ماركت</h3>
+                        <i class="fas fa-chart-line"></i>
+                        <h3>سوشيال بست</h3>
                     </div>
                     <p>الوجهة الأولى لزيادة المتابعين والمشاهدات على وسائل التواصل الاجتماعي بجودة عالية وأسعار تنافسية.</p>
                     <div class="social-links">
@@ -957,9 +780,8 @@
                     <ul class="footer-links">
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#pricing">باقات الأسعار</a></li>
-                        <li><a href="#testimonials">آراء العملاء</a></li>
                         <li><a href="#faq">الأسئلة الشائعة</a></li>
+                        <li><a href="#telegram">التواصل</a></li>
                     </ul>
                 </div>
                 
@@ -975,18 +797,16 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h3>اتصل بنا</h3>
+                    <h3>التواصل</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
-                        <li><i class="fas fa-phone"></i> +966 50 123 4567</li>
-                        <li><i class="fas fa-envelope"></i> info@socialmarket.com</li>
-                        <li><i class="fas fa-clock"></i> الأحد - الخميس: 9 صباحاً - 5 مساءً</li>
+                        <li><a href="https://t.me/mr_muro1"><i class="fab fa-telegram"></i> @mr_muro1</a></li>
+                        <li><i class="fas fa-clock"></i> متاح على مدار الساعة</li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2023 سوشيال ماركت. تم التصميم والتطوير بكل ❤️</p>
+                <p>جميع الحقوق محفوظة &copy; 2023 سوشيال بست. للطلب تواصل على التلجرام: @mr_muro1</p>
             </div>
         </div>
     </footer>
@@ -1022,7 +842,7 @@
                 header.style.background = 'rgba(26, 26, 46, 0.95)';
                 header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
             } else {
-                header.style.background = 'rgba(26, 26, 46, 0.8)';
+                header.style.background = 'rgba(26, 26, 46, 0.95)';
                 header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
             }
         });
