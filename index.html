@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوشيال ماركت - خدمات المشاهدات والمتابعين</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #564fd1;
+            --secondary: #2a2a72;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --gray: #6c757d;
+            --border-radius: 10px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--light);
+            line-height: 1.6;
+            direction: rtl;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, #6c63ff, #ff7eb3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            background: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3') no-repeat center center/cover;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 26, 46, 0.85);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #e0e0ff;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #b0b0d0;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #b0b0d0;
+            margin-bottom: 20px;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: rgba(10, 10, 20, 0.7);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.03);
+            box-shadow: var(--box-shadow);
+            border-color: var(--primary);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: #b0b0d0;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: right;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .pricing-features li i {
+            color: var(--success);
+            margin-left: 10px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 15px;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-info p {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            color: var(--warning);
+            margin-top: 5px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: rgba(10, 10, 20, 0.7);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            color: #b0b0d0;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 20px;
+            max-height: 200px;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #6c63ff, #2a2a72);
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #e0e0ff;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links li a {
+            color: #b0b0d0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links li a:hover {
+            color: var(--primary);
+            padding-right: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0b0d0;
+            font-size: 0.9rem;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .service-card, .pricing-card, .testimonial-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <h1>سوشيال ماركت</h1>
+                </div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#pricing">الباقات</a></li>
+                        <li><a href="#testimonials">اراء العملاء</a></li>
+                        <li><a href="#faq">الأسئلة الشائعة</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="auth-buttons">
+                    <button class="btn btn-outline">تسجيل دخول</button>
+                    <button class="btn btn-primary">تسجيل جديد</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>زود متابعيك ومشاهداتك بسرعة وموثوقية</h2>
+                <p>الخدمة الأسرع والأكثر موثوقية لزيادة المتابعين والمشاهدات على TikTok، Facebook، وYouTube بأفضل الأسعار</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">اطلب الآن</button>
+                    <button class="btn btn-outline">عرض الخدمات</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدماتنا المميزة</h2>
+                <p>نقدم أفضل خدمات زيادة المتابعين والمشاهدات لوسائل التواصل الاجتماعي بجودة عالية ونتائج مضمونة</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>مشاهدات تيك توك</h3>
+                    <p>احصل على آلاف المشاهدات الحقيقية لفيديوهاتك على TikTok بسرعة فائقة لزيادة انتشارك</p>
+                    <button class="btn btn-outline">اطلب الآن</button>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>مشاهدات يوتيوب</h3>
+                    <p>زود مشاهدات فيديوهاتك على YouTube بشكل طبيعي لتحسين تصنيفاتك وجذب المزيد من المشاهدين</p>
+                    <button class="btn btn-outline">اطلب الآن</button>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3>مشاهدات فيسبوك</h3>
+                    <p>زود مشاهدات فيديوهاتك على Facebook بسرعة لزيادة التفاعل والوصول إلى جمهور أوسع</p>
+                    <button class="btn btn-outline">اطلب الآن</button>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>متابعين تيك توك</h3>
+                    <p>احصل على متابعين حقيقيين ونشطين لحسابك على TikTok لزيادة مصداقيتك وانتشارك</p>
+                    <button class="btn btn-outline">اطلب الآن</button>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>متابعين فيسبوك</h3>
+                    <p>زود متابعي صفحتك على Facebook بمتابعين حقيقيين مهتمين بمحتواك لزيادة التفاعل</p>
+                    <button class="btn btn-outline">اطلب الآن</button>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>مشتركين يوتيوب</h3>
+                    <p>احصل على مشتركين حقيقيين لقناتك على YouTube لزيادة إيراداتك وانتشار قناتك</p>
+                    <button class="btn btn-outline">اطلب الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>باقاتنا التنافسية</h2>
+                <p>اختر الباقة المناسبة لك من بين أفضل العروض والأسعار في السوق</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Pricing Card 1 -->
+                <div class="pricing-card">
+                    <h3>الباقة الأساسية</h3>
+                    <div class="price">50 ريال <span>/ للخدمة</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 1000 متابع لـ TikTok</li>
+                        <li><i class="fas fa-check"></i> 5000 مشاهدة لـ TikTok</li>
+                        <li><i class="fas fa-times"></i> متابعين لـ Facebook</li>
+                        <li><i class="fas fa-times"></i> مشاهدات لـ YouTube</li>
+                        <li><i class="fas fa-times"></i> دعم فني 24/7</li>
+                    </ul>
+                    <button class="btn btn-outline">اختر الباقة</button>
+                </div>
+                
+                <!-- Pricing Card 2 (Popular) -->
+                <div class="pricing-card popular">
+                    <div class="popular-tag">الأكثر طلباً</div>
+                    <h3>الباقة المتوسطة</h3>
+                    <div class="price">120 ريال <span>/ للخدمة</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 5000 متابع لـ TikTok</li>
+                        <li><i class="fas fa-check"></i> 25000 مشاهدة لـ TikTok</li>
+                        <li><i class="fas fa-check"></i> 1000 متابع لـ Facebook</li>
+                        <li><i class="fas fa-check"></i> 10000 مشاهدة لـ YouTube</li>
+                        <li><i class="fas fa-check"></i> دعم فني 24/7</li>
+                    </ul>
+                    <button class="btn btn-primary">اختر الباقة</button>
+                </div>
+                
+                <!-- Pricing Card 3 -->
+                <div class="pricing-card">
+                    <h3>الباقة الاحترافية</h3>
+                    <div class="price">250 ريال <span>/ للخدمة</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 10000 متابع لـ TikTok</li>
+                        <li><i class="fas fa-check"></i> 50000 مشاهدة لـ TikTok</li>
+                        <li><i class="fas fa-check"></i> 5000 متابع لـ Facebook</li>
+                        <li><i class="fas fa-check"></i> 50000 مشاهدة لـ YouTube</li>
+                        <li><i class="fas fa-check"></i> دعم فني 24/7</li>
+                    </ul>
+                    <button class="btn btn-outline">اختر الباقة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>اراء عملائنا</h2>
+                <p>انطباعات العملاء الذين جربوا خدماتنا واختبروا جودتها</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="عميل">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>سارة محمد</h4>
+                            <p>مؤثرة على تيك توك</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"خدمة ممتازة! حصلت على 5000 متابع خلال 3 أيام فقط، والمتابعين حقيقيون ويتفاعلون مع المحتوى. شكراً لكم على الدعم المستمر!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="عميل">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>أحمد خالد</h4>
+                            <p>صاحب قناة يوتيوب</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"لقد جربت العديد من الخدمات من قبل، لكن هذه المرة كانت الأفضل. المشاهدات تزيد بشكل طبيعي ولا يوجد انخفاض بعد فترة. أنصح الجميع بهذه الخدمة."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="عميل">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>لمى عبدالله</h4>
+                            <p>مديرة تسويق</p>
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"استخدمت الخدمة لزيادة متابعي صفحة الفيسبوك الخاصة بالشركة، النتائج مذهلة! التفاعل زاد بنسبة 70% والمبيعات تحسنت بشكل ملحوظ. شكراً لكم!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>الأسئلة الشائعة</h2>
+                <p>إجابات على أكثر الأسئلة التي يطرحها عملاؤنا</p>
+            </div>
+            
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل المتابعين والمشاهدات حقيقية؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، جميع خدماتنا تعتمد على متابعين ومشاهدات حقيقية من حسابات نشطة. نحن لا نستخدم أي روبوتات أو حسابات وهمية.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كم من الوقت تستغرق الخدمة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>تبدأ الخدمة فوراً بعد تأكيد الطلب، وتستغرق عادة من 24 إلى 72 ساعة حسب حجم الطلب ونوع الخدمة.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل هناك ضمان للخدمة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، نقدم ضمان لمدة 30 يوماً على جميع خدماتنا. إذا حدث أي انخفاض غير طبيعي خلال هذه الفترة، سنقوم بتعويضك فوراً.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل الخدمة آمنة لحسابي؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، جميع خدماتنا تعمل ضمن سياسات منصات التواصل الاجتماعي ولا تشكل أي خطر على حسابك.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي طرق الدفع المتاحة؟</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نحن نقبل الدفع عبر البطاقات الإئتمانية، PayPal، تحويل بنكي، وSTC Pay. يمكنك اختيار الطريقة الأنسب لك.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>جاهز لتعزيز وجودك على وسائل التواصل الاجتماعي؟</h2>
+            <p>ابدأ الآن واختر الخدمة التي تناسبك لتزيد من متابعيك ومشاهداتك بسرعة وأمان</p>
+            <button class="btn btn-primary">ابدأ الآن</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-rocket"></i>
+                        <h3>سوشيال ماركت</h3>
+                    </div>
+                    <p>الوجهة الأولى لزيادة المتابعين والمشاهدات على وسائل التواصل الاجتماعي بجودة عالية وأسعار تنافسية.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#pricing">باقات الأسعار</a></li>
+                        <li><a href="#testimonials">آراء العملاء</a></li>
+                        <li><a href="#faq">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>خدماتنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">مشاهدات تيك توك</a></li>
+                        <li><a href="#">متابعين تيك توك</a></li>
+                        <li><a href="#">مشاهدات يوتيوب</a></li>
+                        <li><a href="#">مشتركين يوتيوب</a></li>
+                        <li><a href="#">مشاهدات فيسبوك</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>اتصل بنا</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                        <li><i class="fas fa-phone"></i> +966 50 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@socialmarket.com</li>
+                        <li><i class="fas fa-clock"></i> الأحد - الخميس: 9 صباحاً - 5 مساءً</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 سوشيال ماركت. تم التصميم والتطوير بكل ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle FAQ items
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 46, 0.95)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(26, 26, 46, 0.8)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+            }
+        });
+    </script>
+</body>
+</html>
